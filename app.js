@@ -6,13 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var crimeCollection = require('./routes/crimeCollection');
+var crimeAPIRouter = require("./routes/crimeAPI");
+// var crimeRouter = require('./routes/crimeCollection');
 
 var app = express();
 
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://admin:admin@cluster0-eonhb.mongodb.net/mongoTest?retryWrites=true';
+var mongoDB = 'mongodb+srv://admin:admin@cluster0-absz2.mongodb.net/test?retryWrites=true\n';
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -29,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/addAllData', crimeCollection);
+app.use("/crime", crimeAPIRouter);
+// app.use("/addallcrimes", crimeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
