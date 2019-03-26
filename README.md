@@ -7,3 +7,5 @@ Do not create a new project. Create the following endpoints:
 
 
 Style a Pug view so the user know their request when through or there was an error.
+<hr>
+2 points.
